@@ -1,48 +1,32 @@
-const initialEntries = [
-  {
-    id: 1,
-    description: "Work income",
-    value: 1000.0,
-    isExpense: false,
-  },
-  {
-    id: 2,
-    description: "Water bill",
-    value: 20.0,
-    isExpense: true,
-  },
-  {
-    id: 3,
-    description: "Rent",
-    value: 300,
-    isExpense: true,
-  },
-  {
-    id: 4,
-    description: "Power bill",
-    value: 50,
-    isExpense: true,
-  },
-];
+import { entriesTypes } from "../actions/entries.actions";
+
+const initialEntries = [];
 
 export const entriesReducer = (state = initialEntries, action) => {
   switch (action.type) {
-    case "ADD_ENTRY":
+    case entriesTypes.POPULATE_ENTRIES:
+      return action.payload;
+
+    case entriesTypes.ADD_ENTRY_RESULT:
       const newEntriesAdded = state.concat({ ...action.payload });
       return newEntriesAdded;
 
-    case "REMOVE_ENTRY":
+    case entriesTypes.REMOVE_ENTRY_RESULT:
       const newEntriesDeleted = state.filter(
         (entry) => entry.id !== action.payload.id
       );
       return newEntriesDeleted;
 
-    case "UPDATE_ENTRY":
+    case entriesTypes.POPULATE_ENTRY_DETAILS:
+    case entriesTypes.UPDATE_ENTRY:
       const newEntriesUpdated = [...state];
       const entryToBeUpdatedIndex = newEntriesUpdated.findIndex(
         (entry) => entry.id === action.payload.id
       );
-      newEntriesUpdated[entryToBeUpdatedIndex] = { ...action.payload.entry };
+      newEntriesUpdated[entryToBeUpdatedIndex] = {
+        ...newEntriesUpdated[entryToBeUpdatedIndex],
+        ...action.payload.entry,
+      };
       return newEntriesUpdated;
 
     default:

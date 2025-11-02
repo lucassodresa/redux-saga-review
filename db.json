@@ -8,19 +8,35 @@
     },
     {
       "id": 2,
-      "description": "Water bill",
-      "value": 20.0,
+      "description": "Car bill"
+    },
+    {
+      "id": 3,
+      "description": "Rent"
+    },
+    {
+      "id": 4,
+      "description": "Power bill"
+    }
+  ],
+  "values": [
+    {
+      "id": 1,
+      "value": 122,
+      "isExpense": true
+    },
+    {
+      "id": 2,
+      "value": 20,
       "isExpense": true
     },
     {
       "id": 3,
-      "description": "Rent",
       "value": 300,
       "isExpense": true
     },
     {
       "id": 4,
-      "description": "Power bill",
       "value": 50,
       "isExpense": true
     }
